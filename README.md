@@ -7,6 +7,7 @@
 [![Latest release](https://img.shields.io/github/v/release/shuya310/PDF-merge)](https://github.com/shuya310/PDF-merge/releases/latest)
 ![No upload](https://img.shields.io/badge/upload-none-2e7d32)
 ![Single HTML file](https://img.shields.io/badge/single-HTML%20file-555)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [English](#english) | [日本語](#日本語)
 
@@ -24,6 +25,7 @@ This tool doesn't. It is **one HTML file**, and all processing happens locally i
 - 🌐 **Works in any modern browser.** Chrome, Edge, Firefox, Safari. Nothing to install and no admin rights needed.
 - 📄 **Just one file.** Copy `pdf-merge.html` to a USB stick or a shared folder and anyone can use it.
 - 🖱️ **Easy to use.** Drag and drop PDFs, drag rows to reorder, then click Merge.
+- 🇬🇧🇯🇵 **English / Japanese UI.** Picks your browser language automatically. Switch anytime with the button in the top right.
 
 ### Get started
 
@@ -34,9 +36,7 @@ This tool doesn't. It is **one HTML file**, and all processing happens locally i
 
 1. Add PDFs with the button, or drag and drop them anywhere on the window. Files that are not PDFs are ignored.
 2. Set the order (they are merged from top to bottom). Click and drag a row, or use the `↑` `↓` buttons.
-3. Enter an output file name and click **結合して保存** (Merge & Save).
-
-> The interface is currently in Japanese. The three steps above are all you need.
+3. Enter an output file name and click **Merge & Save**.
 
 ### Notes
 
@@ -61,6 +61,7 @@ If this tool is useful to you, please give it a ⭐. It helps other people find 
 - 🌐 **いろいろなブラウザで使える。** Chrome / Edge / Firefox / Safari。インストールも管理者権限もいりません。
 - 📄 **ファイル1つだけ。** `pdf-merge.html` を USB メモリや共有フォルダに置けば、誰でもすぐ使えます。
 - 🖱️ **かんたん操作。** ドラッグ&ドロップで追加し、行をつかんで並べ替えて、ボタンを押すだけです。
+- 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語に合わせて自動で切り替わります。右上のボタンでいつでも変えられます。
 
 ### はじめかた
 
@@ -94,9 +95,15 @@ Safari で保存がうまくいかない場合は `start.command` をダブル�
 | --- | --- |
 | `pdf-merge.html` | The whole app in one file: styles, UI, and script. pdf-lib 1.17.1 is embedded at the end. / これ1つで動く本体。末尾に pdf-lib 1.17.1 を埋め込み済み |
 | `index.html` | Redirects to `pdf-merge.html` (for GitHub Pages) / サイトのトップから本体へ転送 |
+| `LICENSE` | MIT License |
 | `start.command` | Optional local launcher for macOS, mainly for Safari / ローカルサーバーで開くランチャー（任意） |
 
 Reordering works directly on the `items` array: `reorderTo` rewrites the array and `render` redraws the list.
 並べ替えは `items` 配列の並びそのものです（`reorderTo` が配列を書き換え、`render` が描き直す）。
+
+## License / ライセンス
+
+[MIT License](LICENSE). Free to use, copy, modify, and share, including for commercial use. Just keep the copyright notice.
+自由に使用・複製・改変・再配布できます（商用利用も可）。著作権表示だけ残してください。
 
 Built with [pdf-lib](https://github.com/Hopding/pdf-lib) (MIT).
