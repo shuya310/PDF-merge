@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF 結合</title>
+
+<!-- 外部への通信は一切ありません。読み込むのは同じフォルダの lib/pdf-lib.min.js と pdf-merge.css だけです。 -->
+<script src="lib/pdf-lib.min.js"></script>
+<link rel="stylesheet" href="pdf-merge.css">
+</head>
+<body>
+
+<h1>オフラインでPDF結合</h1>
+
+<fieldset>
+  <legend>1. ファイルを追加</legend>
+  <div id="drop">
+    <h4>ここにPDFをドラッグ&amp;ドロップ（ウインドウのどこに落としてもOK）</h4>
+    <input type="file" id="picker" accept="application/pdf" multiple>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>2. 順番を決める（上から順に結合されます）</legend>
+  <ol id="list"></ol>
+  <h4 class="note" id="hint" style="margin:0">まだファイルがありません。</h4>
+</fieldset>
+
+<fieldset>
+  <legend>3. 出力</legend>
+  <label>ファイル名 <input type="text" id="outname" value="PDF_結合"> .pdf</label>
+  <div><button id="merge" disabled>結合して保存</button></div>
+  <div id="status"></div>
+</fieldset>
+
+<p>Copyright 2026 shuya310. All rights reserved.</p>
+
+<script>
+// ---- 状態 ----------------------------------------------------
+// items の並び順が、そのまま結合される順番です。
+var items = [];   // { id: 番号, file: File, pages: 数値かnull, error: 文字列か空 }
+var nextId = 1;
+
+var listEl   = document.getElementById("list");
+var hintEl   = document.getElementById("hint");
+var statusEl = document.getElementById("status");
+var dropEl   = document.getElementById("drop");
+var mergeBtn = document.getElementById("merge");
+
+// ---- 画面の描き直し ------------------------------------------
+function render() {
+  listEl.innerHTML = "";
+
+  items.forEach(function (item, i) {
+    var li = document.createElement("li");
+    li.dataset.id = item.id;
+    if (item.error) li.className = "error";
+
+    var grip = document.createElement("span");
+    grip.className = "grip";
+    grip.textContent = "⋮⋮";
+    grip.title = "ドラッグして並べ替え";
+
+    var no = document.createElement("span");
+    no.className = "no";
+    no.textContent = (i + 1) + ".";
+
+    var name = document.createElement("span");
+    name.className = "name";
+    name.textContent = item.file.name;
+    name.title = item.file.name;
+
+    var pages = document.createElement("span");
+    pages.className = "pages";
+    if (item.error) pages.textContent = item.error;
+    else if (item.pages === null) pages.textContent = "確認中";
+    else pages.textContent = item.pages + "ページ";
+
+    li.appendChild(grip);
+    li.appendChild(no);
+    li.appendChild(name);
+    li.appendChild(pages);
+    li.appendChild(makeButton("↑", i === 0, function () { swap(i, i - 1); }));
+    li.appendChild(makeButton("↓", i === items.length - 1, function () { swap(i, i + 1); }));
+
+    var removeBtn = makeButton("削除", false, function () { items.splice(i, 1); render(); });
+    removeBtn.className = "remove";
+    li.appendChild(removeBtn);
+
+    listEl.appendChild(li);
+  });
+
+  var ok = items.filter(function (item) { return !item.error; });
+  var total = ok.reduce(function (sum, item) { return sum + (item.pages || 0); }, 0);
+
+  hintEl.hidden = items.length > 0;
+  mergeBtn.disabled = ok.length === 0;
+  mergeBtn.textContent = ok.length === 0
+    ? "結合して保存"
+    : "結合して保存（" + ok.length + "ファイル " + total + "ページ）";
+
+  if (drag) applyDrag();   // 並べ替え中なら、つかんでいる行の見た目を戻す
+}
+
+function makeButton(label, disabled, onClick) {
+  var b = document.createElement("button");
+  b.type = "button";
+  b.textContent = label;
+  b.disabled = disabled;
+  b.onclick = onClick;
+  return b;
+}
+
+function swap(a, b) {
+  var tmp = items[a];
+  items[a] = items[b];
+  items[b] = tmp;
+  render();
+}
+
+function setStatus(text, isError) {
+  statusEl.textContent = text;
+  statusEl.className = isError ? "error" : "";
+}
+
+// ---- ファイル追加 --------------------------------------------
+function isPdf(file) {
+  return file.type === "application/pdf" || /\.pdf$/i.test(file.name);
+}
+
+function addFiles(fileList) {
+  var all = Array.prototype.slice.call(fileList);
+  var files = all.filter(isPdf);
+
+  if (files.length === 0) {
+    setStatus("PDFファイルがありませんでした。", true);
+    return;
+  }
+
+  files.forEach(function (file) {
+    var item = { id: nextId++, file: file, pages: null, error: "" };
+    items.push(item);
+
+    // ページ数を数える（ここでも読み込むだけで、送信はしません）
+    file.arrayBuffer()
+      .then(function (bytes) {
+        return PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+      })
+      .then(function (pdf) { item.pages = pdf.getPageCount(); })
+      .catch(function () { item.error = "開けません（暗号化か破損）"; })
+      .then(render);
+  });
+
+  var skipped = all.length - files.length;
+  setStatus(files.length + "ファイルを追加しました。" + (skipped > 0 ? "（PDF以外の" + skipped + "件は無視しました）" : ""));
+  render();
+}
+
+document.getElementById("picker").onchange = function (event) {
+  addFiles(event.target.files);
+  event.target.value = "";  // 同じファイルをもう一度選べるようにする
+};
+
+// ---- ドラッグ&ドロップでファイル追加 -------------------------
+// ウインドウのどこに落としても受け取ります（枠の外に落として消えるのを防ぐため）。
+window.addEventListener("dragover", function (event) {
+  event.preventDefault();               // これを止めないとブラウザがPDFを開いてしまう
+  dropEl.classList.add("over");
+});
+
+window.addEventListener("dragleave", function (event) {
+  if (!event.relatedTarget) dropEl.classList.remove("over");   // ウインドウの外へ出たとき
+});
+
+window.addEventListener("drop", function (event) {
+  event.preventDefault();
+  dropEl.classList.remove("over");
+  if (event.dataTransfer && event.dataTransfer.files.length) addFiles(event.dataTransfer.files);
+});ｓ
+
+// ---- 長押しドラッグで並べ替え --------------------------------
+var LONG_PRESS = 200;   // 長押しと判定するまでの時間（ミリ秒）
+var press = null;       // 長押し待ち  { id, y, grabDY, timer }
+var drag  = null;       // 並べ替え中  { id, y, grabDY }
+
+listEl.addEventListener("pointerdown", function (event) {
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+
+  var li = event.target.closest("li");
+  if (!li || event.target.closest("button")) return;   // ボタンはボタンとして動かす
+
+  // つかんだ位置と行の上端の差。これを保っておくと行が指の下からずれません。
+  var info = {
+    id: Number(li.dataset.id),
+    y: event.clientY,
+    grabDY: event.clientY - li.getBoundingClientRect().top
+  };
+
+  listEl.setPointerCapture(event.pointerId);   // 行の外に出ても操作を受け取り続ける
+
+  if (event.target.classList.contains("grip")) {
+    startDrag(info);            // ⋮⋮ はすぐ動かせる
+  } else {
+    press = info;               // 行の本体は長押しから
+    press.timer = setTimeout(function () {
+      var p = press;
+      press = null;
+      startDrag(p);
+    }, LONG_PRESS);
+  }
+});
+
+listEl.addEventListener("pointermove", function (event) {
+  // 長押しを待っている間に動かしたら、ドラッグではなく普通の操作とみなす
+  if (press && Math.abs(event.clientY - press.y) > 8) {
+    clearTimeout(press.timer);
+    press = null;
+  }
+  if (!drag) return;
+
+  event.preventDefault();
+  drag.y = event.clientY;
+  reorderTo(event.clientY);   // 他の行にかぶったら順番を入れ替える
+  applyDrag();
+});
+
+listEl.addEventListener("pointerup", endDrag);
+listEl.addEventListener("pointercancel", endDrag);
+
+function startDrag(info) {
+  drag = info;
+  document.body.style.cursor = "grabbing";
+  applyDrag();
+}
+
+function endDrag() {
+  if (press) { clearTimeout(press.timer); press = null; }
+  if (!drag) return;
+  drag = null;
+  document.body.style.cursor = "";
+  render();   // ずらした見た目を消して、番号を振り直す
+}
+
+function liOfDrag() {
+  return listEl.querySelector('li[data-id="' + drag.id + '"]');
+}
+
+// つかんでいる行を、指（マウス）の位置に合わせてずらす
+function applyDrag() {
+  var li = liOfDrag();
+  if (!li) return;
+  li.classList.add("dragging");
+  li.style.transform = "none";                      // 本来の位置を測るため一度戻す
+  var top = li.getBoundingClientRect().top;
+  li.style.transform = "translateY(" + (drag.y - drag.grabDY - top) + "px)";
+}
+
+// 指の位置にある行と入れ替える（items の並びを直接書き換える）
+function reorderTo(y) {
+  var from = items.findIndex(function (item) { return item.id === drag.id; });
+  if (from < 0) return;
+
+  var rows = listEl.children;
+  for (var i = 0; i < rows.length; i++) {
+    if (i === from) continue;
+    var rect = rows[i].getBoundingClientRect();
+    if (y >= rect.top && y <= rect.bottom) {
+      items.splice(i, 0, items.splice(from, 1)[0]);
+      render();
+      return;
+    }
+  }
+}
+
+// ---- 結合 ----------------------------------------------------
+mergeBtn.onclick = function () {
+  var targets = items.filter(function (item) { return !item.error; });
+  if (targets.length === 0) return;
+
+  mergeBtn.disabled = true;
+  setStatus("結合しています…");
+
+  mergeAll(targets)
+    .then(function (bytes) {
+      download(bytes, filename());
+      setStatus(filename() + " を保存しました。");
+    })
+    .catch(function (err) {
+      setStatus("結合に失敗しました：" + err.message, true);
+    })
+    .then(render);
+};
+
+// 1つずつ読み込んでページを移していく
+async function mergeAll(targets) {
+  var output = await PDFLib.PDFDocument.create();
+
+  for (var i = 0; i < targets.length; i++) {
+    var bytes = await targets[i].file.arrayBuffer();
+    var source = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+    var pages = await output.copyPages(source, source.getPageIndices());
+    pages.forEach(function (page) { output.addPage(page); });
+  }
+
+  output.setTitle(filename().replace(/\.pdf$/, ""));
+  return output.save();
+}
+
+function filename() {
+  var name = document.getElementById("outname").value.trim();
+  name = name.replace(/\.pdf$/i, "").replace(/[\\\/:*?"<>|]/g, "_");
+  return (name || "結合資料") + ".pdf";
+}
+
+// ブラウザに保存させる（ここでもファイルは外に出ません）
+function download(bytes, name) {
+  var url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+}
+
+render();
+</script>
+
+</body>
+</html>

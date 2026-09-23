@@ -1,0 +1,75 @@
+:root { color-scheme: light dark; }
+body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  font-family: "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  line-height: 1.7;
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+h1 { font-size: 1.3rem; margin: 0 0 4px; text-align: center; }
+.note { color: #666; font-size: .85rem; margin: 0 0 20px; }
+
+p { text-align: center; margin: 16px 0 0; }
+
+fieldset { border: 1px solid #ccc; border-radius: 6px; background: #fff; margin: 0 0 16px; padding: 12px 14px; }
+legend { font-size: .8rem; color: #666; padding: 0 4px; }
+
+label { font-size: .9rem; }
+input[type="text"] { width: 14em; padding: 6px 8px; border: 1px solid #aaa; border-radius: 4px; font: inherit; background: #fff; color: inherit; }
+
+button { font: inherit; padding: 6px 14px; border: 1px solid #aaa; border-radius: 4px; background: #fff; color: inherit; cursor: pointer; }
+button:hover:not(:disabled) { border-color: #333; }
+button:disabled { opacity: .4; cursor: default; }
+#merge { display: block; margin: 8px auto 0; padding: 10px 24px; font-weight: bold; background: #24478f; color: #fff; border-color: #24478f; }
+#merge:hover:not(:disabled) { background: #1b3670; border-color: #1b3670; }
+#merge:disabled { background: #bbb; border-color: #bbb; color: #fff; }
+
+/* ファイルを受け取る枠（クリックでも、ドラッグ&ドロップでも追加できる） */
+#drop { border: 2px dashed #bbb; border-radius: 8px; padding: 16px; text-align: center; }
+#drop p { margin: 0 0 8px; font-size: .9rem; color: #666; }
+#drop.over { border-color: #24478f; background: #eaf0fb; }
+#drop.over p { color: #24478f; }
+
+ol { list-style: none; margin: 0; padding: 0; }
+li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; margin-bottom: 6px;
+  background: #fff; border: 1px solid #ddd; border-radius: 6px;
+  user-select: none;
+}
+li .grip { color: #aaa; cursor: grab; touch-action: none; letter-spacing: -2px; }
+li .no { min-width: 1.6em; text-align: right; color: #666; font-variant-numeric: tabular-nums; }
+li .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+li .pages { color: #666; font-size: .8rem; font-variant-numeric: tabular-nums; }
+li.error { border-color: #b33; }
+li.error .pages { color: #b33; }
+li button { padding: 2px 9px; }
+li button.remove { background: #b33; border-color: #b33; color: #fff; }
+li button.remove:hover:not(:disabled) { background: #8f2727; border-color: #8f2727; }
+
+/* 並べ替え中の行（指やマウスに付いてくる） */
+li.dragging { position: relative; z-index: 5; border-color: #24478f; box-shadow: 0 6px 16px rgba(0,0,0,.22); cursor: grabbing; }
+
+#status { min-height: 1.6em; font-size: .9rem; margin-top: 10px; }
+#status:empty { min-height: 0; margin-top: 0; }
+#status.error { color: #b33; }
+
+@media (prefers-color-scheme: dark) {
+  body { background: #1c1c1e; color: #e8e8ea; }
+  .note, legend, li .no, li .pages, #drop p { color: #9a9aa0; }
+  fieldset, li { background: #26262a; border-color: #3a3a40; }
+  input[type="text"], button { background: #2f2f34; border-color: #55555c; color: inherit; }
+  button:hover:not(:disabled) { border-color: #9a9aa0; }
+  #merge { background: #5b7fd4; border-color: #5b7fd4; color: #14141a; }
+  #merge:hover:not(:disabled) { background: #7593dc; border-color: #7593dc; }
+  #drop { border-color: #55555c; }
+  #drop.over { border-color: #5b7fd4; background: #2b3450; }
+  #drop.over p { color: #9fb6ec; }
+  li.dragging { border-color: #5b7fd4; box-shadow: 0 6px 16px rgba(0,0,0,.5); }
+  li.error { border-color: #d98a80; }
+  li.error .pages, #status.error { color: #d98a80; }
+  li button.remove { background: #d9736a; border-color: #d9736a; color: #14141a; }
+  li button.remove:hover:not(:disabled) { background: #e48c84; border-color: #e48c84; }
+}
