@@ -25,6 +25,8 @@ This tool doesn't. It is **one HTML file**, and all processing happens locally i
 - 🌐 **Works in any modern browser.** Chrome, Edge, Firefox, Safari. Nothing to install and no admin rights needed.
 - 📄 **Just one file.** Copy `pdf-merge.html` to a USB stick or a shared folder and anyone can use it.
 - 🖱️ **Easy to use.** Drag and drop PDFs, drag rows to reorder, then click Merge.
+- ⚡ **Fast & lightweight.** Powered by `pdf-lib` for quick merging right in your browser.
+- 🌓 **Dark mode.** Follows your system setting automatically.
 - 🇬🇧🇯🇵 **English / Japanese UI.** Picks your browser language automatically. Switch anytime with the button in the top right.
 
 ### Get started
@@ -61,6 +63,8 @@ If this tool is useful to you, please give it a ⭐. It helps other people find 
 - 🌐 **いろいろなブラウザで使える。** Chrome / Edge / Firefox / Safari。インストールも管理者権限もいりません。
 - 📄 **ファイル1つだけ。** `pdf-merge.html` を USB メモリや共有フォルダに置けば、誰でもすぐ使えます。
 - 🖱️ **かんたん操作。** ドラッグ&ドロップで追加し、行をつかんで並べ替えて、ボタンを押すだけです。
+- ⚡ **軽くて速い。** `pdf-lib` を使い、ブラウザの中ですばやく結合します。
+- 🌓 **ダークモード対応。** OSの設定に合わせて自動で切り替わります。
 - 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語に合わせて自動で切り替わります。右上のボタンでいつでも変えられます。
 
 ### はじめかた
