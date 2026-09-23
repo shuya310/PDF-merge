@@ -255,8 +255,8 @@ window.addEventListener("drop", function (event) {
   if (event.dataTransfer && event.dataTransfer.files.length) addFiles(event.dataTransfer.files);
 });
 
-// ---- 長押しドラッグで並べ替え --------------------------------
-var LONG_PRESS = 200;   // 長押しと判定するまでの時間（ミリ秒）
+// ---- ドラッグで並べ替え --------------------------------------
+var LONG_PRESS = 200;   // タッチで長押しと判定するまでの時間（ミリ秒）
 var press = null;       // 長押し待ち  { id, y, grabDY, timer }
 var drag  = null;       // 並べ替え中  { id, y, grabDY }
 
@@ -275,10 +275,10 @@ listEl.addEventListener("pointerdown", function (event) {
 
   listEl.setPointerCapture(event.pointerId);   // 行の外に出ても操作を受け取り続ける
 
-  if (event.target.classList.contains("grip")) {
-    startDrag(info);            // ⋮⋮ はすぐ動かせる
+  if (event.pointerType === "mouse" || event.target.classList.contains("grip")) {
+    startDrag(info);            // マウスと ⋮⋮ はすぐ動かせる
   } else {
-    press = info;               // 行の本体は長押しから
+    press = info;               // タッチで行の本体は長押しから（スクロールと区別するため）
     press.timer = setTimeout(function () {
       var p = press;
       press = null;
