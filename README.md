@@ -3,10 +3,8 @@
 **Merge PDFs entirely inside your browser. Your files never leave your computer.**
 **PDFの結合を、ブラウザの中だけで。ファイルは一切外に出ません。**
 
-[![Try it now](https://img.shields.io/badge/Try%20it%20now-%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%86-24478f)](https://shuya310.github.io/PDF-merge/)
+[![Try it now](https://img.shields.io/badge/Try%20it%20now-%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%86-24478f)](https://shuya310.github.io/PDF-merge/pdf-merge.html)
 [![Latest release](https://img.shields.io/github/v/release/shuya310/PDF-merge)](https://github.com/shuya310/PDF-merge/releases/latest)
-![No upload](https://img.shields.io/badge/upload-none-2e7d32)
-![Single HTML file](https://img.shields.io/badge/single-HTML%20file-555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [English](#english) | [日本語](#日本語)
