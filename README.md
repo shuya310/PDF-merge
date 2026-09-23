@@ -19,9 +19,7 @@
 
 | パス | 役割 |
 | --- | --- |
-| `pdf-merge.html` | 画面の構造と処理（約330行） |
-| `pdf-merge.css` | 見た目（ダークモード対応込み） |
-| `lib/pdf-lib.min.js` | PDF操作ライブラリ pdf-lib 1.17.1 |
+| `pdf-merge.html` | これ1つで動く本体。見た目（`<style>`）→ 画面 → 処理（`<script>`）の順で、末尾に PDF操作ライブラリ pdf-lib 1.17.1 を埋め込み済み |
 | `start.command` | ローカルサーバーで開くランチャー（任意）※主にSafari |
 
 ## 仕様メモ
