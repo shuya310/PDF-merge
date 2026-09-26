@@ -29,7 +29,7 @@ This tool doesn't. It is **one HTML file**, and all processing happens locally i
 
 ### Get started
 
-- **Try it online:** <https://shuya310.github.io/PDF-merge/> (it still runs 100% in your browser, and your files are not uploaded)
+- **Try it online:** <https://shuya310.github.io/PDF-merge/pdf-merge.html> (it still runs 100% in your browser, and your files are not uploaded)
 - **Use it offline:** download `pdf-merge.html` from the [latest release](https://github.com/shuya310/PDF-merge/releases/latest), then double-click it.
 
 ### How to use
@@ -67,7 +67,7 @@ If this tool is useful to you, please give it a ⭐. It helps other people find 
 
 ### はじめかた
 
-- **すぐ試す：** <https://shuya310.github.io/PDF-merge/> （Web版でも処理はすべてブラウザ内で行われ、ファイルは送信されません）
+- **すぐ試す：** <https://shuya310.github.io/PDF-merge/pdf-merge.html> （Web版でも処理はすべてブラウザ内で行われ、ファイルは送信されません）
 - **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードし、ダブルクリックで開きます。
 
 ### 使い方
