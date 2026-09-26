@@ -16,81 +16,76 @@
 
 ## English
 
-Most "free online PDF merge" sites upload your documents to someone else's server.
-This tool doesn't. It is **one HTML file**, and all processing happens locally in your browser.
+Let's be honest: most "free online PDF merge" sites quietly upload your documents to someone else's server.
+This one doesn't. It's just **one HTML file**, and everything happens locally, right there in your browser.
 
-### Why use this?
+### Why you'll like it
 
-- 🔒 **Safe for confidential documents.** Contracts, medical records, HR files, and internal documents are never sent anywhere. The page contains no network code at all.
-- ✈️ **Works fully offline.** Runs in air-gapped environments, on a plane, or on a closed corporate network. Once you have the file, no internet connection is needed.
-- 🌐 **Works in any modern browser.** Chrome, Edge, Firefox, Safari. Nothing to install and no admin rights needed.
-- 📄 **Just one file.** Copy `pdf-merge.html` to a USB stick or a shared folder and anyone can use it.
-- 🖱️ **Easy to use.** Drag and drop PDFs, drag rows to reorder, then click Merge.
-- ⚡ **Fast & lightweight.** Powered by `pdf-lib` for quick merging right in your browser.
-- 🌓 **Dark mode.** Follows your system setting automatically.
-- 🇬🇧🇯🇵 **English / Japanese UI.** Picks your browser language automatically. Switch anytime with the button in the top right.
+- 🔒 **Great for stuff you don't want floating around.** Contracts, medical records, HR files — none of it goes anywhere. There's no network code in the page at all.
+- ✈️ **Works completely offline.** Air-gapped machine, plane wifi, locked-down corporate network — doesn't matter. Once you've got the file, you're good.
+- 🌐 **Runs in whatever browser you've got.** Chrome, Edge, Firefox, Safari. No install, no admin rights, nothing.
+- 📄 **Just one file.** Drop `pdf-merge.html` on a USB stick or a shared folder and anyone can use it.
+- 🖱️ **Dead simple.** Drag and drop your PDFs, drag rows to reorder, hit Merge.
+- ⚡ **Fast.** `pdf-lib` does the heavy lifting, right there in the browser.
+- 🌓 **Dark mode**, following your system setting automatically.
+- 🇬🇧🇯🇵 **English / Japanese UI.** Picks your browser's language automatically, and you can flip it anytime with the button top-right.
 
 ### Get started
+
 
 - **Try it online:** <https://shuya310.github.io/PDF-merge/pdf-merge.html> (it still runs 100% in your browser, and your files are not uploaded)
 - **Use it offline:** download `pdf-merge.html` from the [latest release](https://github.com/shuya310/PDF-merge/releases/latest), then double-click it.
 
-### How to use
+### How to use it
 
-1. Add PDFs with the button, or drag and drop them anywhere on the window. Files that are not PDFs are ignored.
-2. Set the order (they are merged from top to bottom). Click and drag a row, or use the `↑` `↓` buttons.
-3. Enter an output file name and click **Merge & Save**.
+1. Add your PDFs — click the button or drag them onto the window. Anything that's not a PDF gets ignored.
+2. Put them in order (top to bottom = merge order). Drag a row, or use the `↑` `↓` buttons.
+3. Type a file name, hit **Merge & Save**. Done.
 
-### Notes
+### Good to know
 
-- Encrypted PDFs may not open. Those rows turn red and are skipped.
-- Bookmarks are not carried over. Forms and annotations usually are.
-- Safari: if saving does not work when you open the file directly, double-click `start.command` (macOS). It serves the page from `127.0.0.1` only.
-- The tool is designed for PCs. On phones and tablets, drag rows by the `⋮⋮` handle.
+- Encrypted PDFs might not open — those rows turn red and get skipped automatically.
+- Bookmarks don't carry over. Forms and annotations usually do.
+- Built with PCs in mind. On phones/tablets, grab the `⋮⋮` handle to drag rows around.
 
-If this tool is useful to you, please give it a ⭐. It helps other people find it.
+If this saved you some time, a ⭐ would be awesome — it helps other people find it too.
 
 ---
 
 ## 日本語
 
-「無料のオンラインPDF結合サイト」の多くは、ファイルを外部のサーバーへアップロードします。
-このツールはアップロードしません。**HTMLファイル1つ**だけでできていて、処理はすべてあなたのブラウザの中で完結します。
+「無料のオンラインPDF結合」系のサイトって、だいたいファイルをどこかのサーバーに送ってるんですよね。
+このツールはそれをしません。**HTMLファイル1つ**だけでできていて、処理は全部あなたのブラウザの中で完結します。
 
 ### ここが便利
 
-- 🔒 **秘匿性の高いファイルも安心。** 契約書・個人情報・社外秘資料も、どこにも送信されません。ページには通信を行う処理が一切含まれていません。
-- ✈️ **完全オフラインで動く。** インターネットにつながらない環境（閉域網・機内・オフライン端末）でも使えます。
-- 🌐 **いろいろなブラウザで使える。** Chrome / Edge / Firefox / Safari。インストールも管理者権限もいりません。
-- 📄 **ファイル1つだけ。** `pdf-merge.html` を USB メモリや共有フォルダに置けば、誰でもすぐ使えます。
-- 🖱️ **かんたん操作。** ドラッグ&ドロップで追加し、行をつかんで並べ替えて、ボタンを押すだけです。
-- ⚡ **軽くて速い。** `pdf-lib` を使い、ブラウザの中ですばやく結合します。
+- 🔒 **秘匿性の高いファイルでも安心。** 契約書・個人情報・社外秘資料も、どこにも送信されません。ページに通信処理は一切入っていません。
+- ✈️ **完全オフラインで動く。** 閉域網でも機内でも、ネットが無くても大丈夫。ファイルさえあればOKです。
+- 🌐 **好きなブラウザで使える。** Chrome / Edge / Firefox / Safari、インストールも管理者権限も不要です。
+- 📄 **ファイルはたった1つ。** `pdf-merge.html` をUSBメモリや共有フォルダに置いておけば、誰でもすぐ使えます。
+- 🖱️ **操作はシンプル。** ドラッグ&ドロップで追加、行をつかんで並べ替えて、ボタンを押すだけ。
+- ⚡ **軽くてサクサク。** `pdf-lib` がブラウザの中でサッと結合してくれます。
 - 🌓 **ダークモード対応。** OSの設定に合わせて自動で切り替わります。
-- 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語に合わせて自動で切り替わります。右上のボタンでいつでも変えられます。
+- 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語で自動判定、右上のボタンでいつでも切り替えられます。
 
 ### はじめかた
-
 - **すぐ試す：** <https://shuya310.github.io/PDF-merge/pdf-merge.html> （Web版でも処理はすべてブラウザ内で行われ、ファイルは送信されません）
 - **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードし、ダブルクリックで開きます。
-
 ### 使い方
-
-1. ファイルを追加する。ボタンで選ぶか、Finder からウインドウへドラッグ&ドロップ（どこに落としてもOK。PDF以外は無視されます）
+1. ファイルを追加する。ボタンで選ぶか、Finderからウインドウへドラッグ&ドロップ（どこに落としてもOK、PDF以外は無視されます）
 2. 順番を入れ替える（上から順に結合されます）
-   - 行を**クリックしたまま動かす**（左の `⋮⋮` をつかんでもOK）
-   - `↑` `↓` ボタンでも1つずつ動かせる
-3. 出力ファイル名を入れて「結合して保存」
-
-Safari で保存がうまくいかない場合は `start.command` をダブルクリックし、開いたページを使ってください（自分のPC内 `127.0.0.1` だけで動きます。終了は Control+C）。
+   - 行をつかんで動かす（左の `⋮⋮` でもOK）
+   - `↑` `↓` ボタンで1つずつ動かしてもOK
+3. 出力ファイル名を入れて「結合して保存」を押すだけ
 
 ### 仕様メモ
 
-- 暗号化されたPDFは開けない場合があり、その行は赤く表示され結合対象から外れます。
-- しおり（ブックマーク）は引き継がれません。フォーム・注釈は多くの場合引き継がれます。
+- 暗号化されたPDFは開けないことがあります。その行は赤く表示されて、結合対象から自動で外れます。
+- しおり（ブックマーク）は引き継がれません。フォーム・注釈はだいたい引き継がれます。
 - 出力ファイル名は、PDF内部のタイトル情報にも同じ名前が書き込まれます。
-- 今のところPCでの使用を想定しています。スマホ・タブレットでは、行の長押しが画面スクロールに取られることがあります。その場合は `⋮⋮` をつかんでください。
+- PCでの使用を想定しています。スマホ・タブレットでは `⋮⋮` をつかんで並べ替えてください。
 
-役に立ったら ⭐ をお願いします。ほかの人がこのツールを見つけやすくなります。
+役に立ったら ⭐ をもらえると嬉しいです。ほかの人がこのツールを見つけやすくなります。
 
 ---
 
@@ -98,17 +93,15 @@ Safari で保存がうまくいかない場合は `start.command` をダブル�
 
 | Path | Role |
 | --- | --- |
-| `pdf-merge.html` | The whole app in one file: styles, UI, and script. pdf-lib 1.17.1 is embedded at the end. / これ1つで動く本体。末尾に pdf-lib 1.17.1 を埋め込み済み |
-| `index.html` | Redirects to `pdf-merge.html` (for GitHub Pages) / サイトのトップから本体へ転送 |
+| `pdf-merge.html` | The whole app in one file: styles, UI, and script. pdf-lib 1.17.1 is embedded at the end. / これ1つで完結する本体。末尾に pdf-lib 1.17.1 を埋め込み済み |
 | `LICENSE` | MIT License |
-| `start.command` | Optional local launcher for macOS, mainly for Safari / ローカルサーバーで開くランチャー（任意） |
 
-Reordering works directly on the `items` array: `reorderTo` rewrites the array and `render` redraws the list.
-並べ替えは `items` 配列の並びそのものです（`reorderTo` が配列を書き換え、`render` が描き直す）。
+Reordering just works on the `items` array directly — `reorderTo` rewrites it, `render` redraws the list.
+並べ替えは `items` 配列そのものを操作しています（`reorderTo` が並びを書き換えて、`render` が描き直すだけ）。
 
 ## License / ライセンス
 
-[MIT License](LICENSE). Free to use, copy, modify, and share, including for commercial use. Just keep the copyright notice.
-自由に使用・複製・改変・再配布できます（商用利用も可）。著作権表示だけ残してください。
+[MIT License](LICENSE). Use it, copy it, tweak it, ship it — commercial use included. Just keep the copyright notice.
+自由に使用・複製・改変・再配布できます（商用利用もOK）。著作権表示だけ残してください。
 
 Built with [pdf-lib](https://github.com/Hopding/pdf-lib) (MIT).
