@@ -25,7 +25,7 @@ h1 { font-size: 1.3rem; margin: 0 0 4px; text-align: center; }
 
 p { text-align: center; margin: 16px 0 0; }
 
-fieldset { border: 1px solid #ccc; border-radius: 6px; background: #fff; margin: 0 0 16px; padding: 12px 14px; }
+fieldset { min-width: 0; border: 1px solid #ccc; border-radius: 6px; background: #fff; margin: 0 0 16px; padding: 12px 14px; }
 legend { font-size: .8rem; color: #666; padding: 0 4px; }
 
 label { font-size: .9rem; }
@@ -55,6 +55,7 @@ li .grip { color: #aaa; cursor: grab; touch-action: none; letter-spacing: -2px; 
 li .no { min-width: 1.6em; text-align: right; color: #666; font-variant-numeric: tabular-nums; }
 li .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
 li .pages { color: #666; font-size: .8rem; font-variant-numeric: tabular-nums; }
+li .actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 li.error { border-color: #b33; }
 li.error .pages { color: #b33; }
 li button { padding: 2px 9px; }
@@ -84,6 +85,20 @@ li.dragging { position: relative; z-index: 5; border-color: #24478f; box-shadow:
   li.error .pages, #status.error { color: #d98a80; }
   li button.remove { background: #d9736a; border-color: #d9736a; color: #14141a; }
   li button.remove:hover:not(:disabled) { background: #e48c84; border-color: #e48c84; }
+}
+
+/* 画面が狭いとき（スマホなど）は、ページ数と操作ボタンを2段目に折り返す */
+@media (max-width: 560px) {
+  body { padding: 20px 10px; }
+  fieldset { padding: 10px 12px; }
+  input[type="text"] { width: 10em; }
+
+  li { flex-wrap: wrap; row-gap: 8px; padding: 10px; }
+  li .grip { padding: 6px 4px; font-size: 1.05rem; }
+  li .actions { flex-basis: 100%; gap: 8px; }
+  li .pages { flex: 1 1 auto; min-width: 0; margin-right: auto; font-size: .85rem; }
+  li .actions button { flex-shrink: 0; }
+  li button { padding: 9px 12px; font-size: .9rem; }   /* タップしやすいよう少し大きめに */
 }
 </style>
 </head>
@@ -239,16 +254,20 @@ function render() {
     else if (item.pages === null) pages.textContent = T.checking;
     else pages.textContent = T.pages(item.pages);
 
-    li.appendChild(grip);
-    li.appendChild(no);
-    li.appendChild(name);
-    li.appendChild(pages);
-    li.appendChild(makeButton("↑", i === 0, function () { swap(i, i - 1); }));
-    li.appendChild(makeButton("↓", i === items.length - 1, function () { swap(i, i + 1); }));
+    var actions = document.createElement("span");
+    actions.className = "actions";
+    actions.appendChild(pages);
+    actions.appendChild(makeButton("↑", i === 0, function () { swap(i, i - 1); }));
+    actions.appendChild(makeButton("↓", i === items.length - 1, function () { swap(i, i + 1); }));
 
     var removeBtn = makeButton(T.remove, false, function () { items.splice(i, 1); render(); });
     removeBtn.className = "remove";
-    li.appendChild(removeBtn);
+    actions.appendChild(removeBtn);
+
+    li.appendChild(grip);
+    li.appendChild(no);
+    li.appendChild(name);
+    li.appendChild(actions);
 
     listEl.appendChild(li);
   });
