@@ -1,3 +1,6 @@
+```
+アルバイト先で用いる機密性の高い原稿を，一括でシステムに取り込む必要があるため作成しました．
+```
 # Offline PDF Merge / オフラインでPDF結合
 
 **Merge PDFs entirely inside your browser. Your files never leave your computer.**
@@ -5,8 +8,6 @@
 
 [![Try it now](https://img.shields.io/badge/Try%20it%20now-%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%86-24478f)](https://shuya310.github.io/PDF-merge/pdf-merge.html)
 [![Latest release](https://img.shields.io/github/v/release/shuya310/PDF-merge)](https://github.com/shuya310/PDF-merge/releases/latest)
-![No upload](https://img.shields.io/badge/upload-none-2e7d32)
-![Single HTML file](https://img.shields.io/badge/single-HTML%20file-555)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [English](#english) | [日本語](#日本語)
@@ -31,8 +32,9 @@ This one doesn't. It's just **one HTML file**, and everything happens locally, r
 
 ### Get started
 
-- **Try it online:** <https://shuya310.github.io/PDF-merge/pdf-merge.html> (still 100% browser-side, nothing gets uploaded)
-- **Use it offline:** grab `pdf-merge.html` from the [latest release](https://github.com/shuya310/PDF-merge/releases/latest) and double-click it.
+
+- **Try it online:** <https://shuya310.github.io/PDF-merge/pdf-merge.html> (it still runs 100% in your browser, and your files are not uploaded)
+- **Use it offline:** download `pdf-merge.html` from the [latest release](https://github.com/shuya310/PDF-merge/releases/latest), then double-click it.
 
 ### How to use it
 
@@ -67,12 +69,9 @@ If this saved you some time, a ⭐ would be awesome — it helps other people fi
 - 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語で自動判定、右上のボタンでいつでも切り替えられます。
 
 ### はじめかた
-
-- **すぐ試す：** <https://shuya310.github.io/PDF-merge/pdf-merge.html>（Web版でも処理は全部ブラウザ内。ファイルは送信されません）
-- **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードして、ダブルクリック。
-
+- **すぐ試す：** <https://shuya310.github.io/PDF-merge/pdf-merge.html> （Web版でも処理はすべてブラウザ内で行われ、ファイルは送信されません）
+- **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードし、ダブルクリックで開きます。
 ### 使い方
-
 1. ファイルを追加する。ボタンで選ぶか、Finderからウインドウへドラッグ&ドロップ（どこに落としてもOK、PDF以外は無視されます）
 2. 順番を入れ替える（上から順に結合されます）
    - 行をつかんで動かす（左の `⋮⋮` でもOK）
