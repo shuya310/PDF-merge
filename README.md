@@ -1,107 +1,62 @@
 ```
 アルバイト先で用いる機密性の高い原稿を，一括でシステムに取り込む必要があるため作成しました．
 ```
-# Offline PDF Merge / オフラインでPDF結合
+# オフラインでPDF結合
 
-**Merge PDFs entirely inside your browser. Your files never leave your computer.**
-**PDFの結合を、ブラウザの中だけで。ファイルは一切外に出ません。**
-
-[![Try it now](https://img.shields.io/badge/Try%20it%20now-%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%86-24478f)](https://shuya310.github.io/PDF-merge/pdf-merge.html)
-[![Latest release](https://img.shields.io/github/v/release/shuya310/PDF-merge)](https://github.com/shuya310/PDF-merge/releases/latest)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-
-[English](#english) | [日本語](#日本語)
+アルバイト先で用いる機密性の高い原稿を、一括でシステムに取り込むために作成したツール。PDFの結合処理をすべてブラウザ内で完結させ、ファイルやデータを外部のサーバーへ送信しない。
 
 ---
 
-## English
+## 概要
 
-Let's be honest: most "free online PDF merge" sites quietly upload your documents to someone else's server.
-This one doesn't. It's just **one HTML file**, and everything happens locally, right there in your browser.
+多くのオンラインPDF結合サービスと異なり、このツールはサーバーへのファイル送信を行わない。HTMLファイル1つだけで構成されており、ブラウザ上ですべての処理が実行される。
 
-### Why you'll like it
+## 特徴
 
-- 🔒 **Great for stuff you don't want floating around.** Contracts, medical records, HR files — none of it goes anywhere. There's no network code in the page at all.
-- ✈️ **Works completely offline.** Air-gapped machine, plane wifi, locked-down corporate network — doesn't matter. Once you've got the file, you're good.
-- 🌐 **Runs in whatever browser you've got.** Chrome, Edge, Firefox, Safari. No install, no admin rights, nothing.
-- 📄 **Just one file.** Drop `pdf-merge.html` on a USB stick or a shared folder and anyone can use it.
-- 🖱️ **Dead simple.** Drag and drop your PDFs, drag rows to reorder, hit Merge.
-- ⚡ **Fast.** `pdf-lib` does the heavy lifting, right there in the browser.
-- 🌓 **Dark mode**, following your system setting automatically.
-- 🇬🇧🇯🇵 **English / Japanese UI.** Picks your browser's language automatically, and you can flip it anytime with the button top-right.
+* **高い秘匿性**
+契約書、個人情報、社外秘資料などを安心して処理できる。ネットワークを介した通信処理を含まない。
+* **完全オフライン動作**
+インターネット接続がない環境や閉域網でも動作する。
+* **環境を選ばない**
+Chrome、Edge、Firefox、Safariなどの主要なブラウザで動作し、追加のインストールや管理者権限は不要。
+* **単一ファイルでの運用**
+`pdf-merge.html` をUSBメモリや共有フォルダに配置するだけで、どこでも利用できる。
+* **シンプルな操作**
+ドラッグ＆ドロップでファイルを追加し、直感的な並べ替えを行って保存するだけ。
+* **軽量で高速**
+`pdf-lib` を利用し、ブラウザ上で素早く処理を行う。
+* **ダークモード対応**
+OSのシステム設定に合わせて自動で切り替わる。
+* **多言語対応**
+ブラウザの言語設定を自動で判別し、右上のボタンでいつでも切り替え可能。
 
-### Get started
+## はじめかた
 
+* **オンラインで試す：** [ブラウザ版を利用する](https://shuya310.github.io/PDF-merge/pdf-merge.html)（※処理はすべてブラウザ内で実行され、ファイルは送信されない）
+* **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードし、ダブルクリックして開く。
 
-- **Try it online:** <https://shuya310.github.io/PDF-merge/pdf-merge.html> (it still runs 100% in your browser, and your files are not uploaded)
-- **Use it offline:** download `pdf-merge.html` from the [latest release](https://github.com/shuya310/PDF-merge/releases/latest), then double-click it.
+## 使い方
 
-### How to use it
+1. ファイルを追加する（ボタンで選択するか、ウィンドウにドラッグ＆ドロップする。PDF以外のファイルは無視される）。
+2. 並び順を調整する（上から順に結合される。行を直接ドラッグするか、`↑` `↓` ボタンを使用する）。
+3. 出力ファイル名を入力し、「結合して保存」をクリックする。
 
-1. Add your PDFs — click the button or drag them onto the window. Anything that's not a PDF gets ignored.
-2. Put them in order (top to bottom = merge order). Drag a row, or use the `↑` `↓` buttons.
-3. Type a file name, hit **Merge & Save**. Done.
+## 注意点
 
-### Good to know
-
-- Encrypted PDFs might not open — those rows turn red and get skipped automatically.
-- Bookmarks don't carry over. Forms and annotations usually do.
-- Built with PCs in mind. On phones/tablets, grab the `⋮⋮` handle to drag rows around.
-
-If this saved you some time, a ⭐ would be awesome — it helps other people find it too.
-
----
-
-## 日本語
-
-「無料のオンラインPDF結合」系のサイトって、だいたいファイルをどこかのサーバーに送ってるんですよね。
-このツールはそれをしません。**HTMLファイル1つ**だけでできていて、処理は全部あなたのブラウザの中で完結します。
-
-### ここが便利
-
-- 🔒 **秘匿性の高いファイルでも安心。** 契約書・個人情報・社外秘資料も、どこにも送信されません。ページに通信処理は一切入っていません。
-- ✈️ **完全オフラインで動く。** 閉域網でも機内でも、ネットが無くても大丈夫。ファイルさえあればOKです。
-- 🌐 **好きなブラウザで使える。** Chrome / Edge / Firefox / Safari、インストールも管理者権限も不要です。
-- 📄 **ファイルはたった1つ。** `pdf-merge.html` をUSBメモリや共有フォルダに置いておけば、誰でもすぐ使えます。
-- 🖱️ **操作はシンプル。** ドラッグ&ドロップで追加、行をつかんで並べ替えて、ボタンを押すだけ。
-- ⚡ **軽くてサクサク。** `pdf-lib` がブラウザの中でサッと結合してくれます。
-- 🌓 **ダークモード対応。** OSの設定に合わせて自動で切り替わります。
-- 🇯🇵🇬🇧 **日本語 / 英語の画面。** ブラウザの言語で自動判定、右上のボタンでいつでも切り替えられます。
-
-### はじめかた
-- **すぐ試す：** <https://shuya310.github.io/PDF-merge/pdf-merge.html> （Web版でも処理はすべてブラウザ内で行われ、ファイルは送信されません）
-- **オフラインで使う：** [最新リリース](https://github.com/shuya310/PDF-merge/releases/latest)から `pdf-merge.html` をダウンロードし、ダブルクリックで開きます。
-### 使い方
-1. ファイルを追加する。ボタンで選ぶか、Finderからウインドウへドラッグ&ドロップ（どこに落としてもOK、PDF以外は無視されます）
-2. 順番を入れ替える（上から順に結合されます）
-   - 行をつかんで動かす（左の `⋮⋮` でもOK）
-   - `↑` `↓` ボタンで1つずつ動かしてもOK
-3. 出力ファイル名を入れて「結合して保存」を押すだけ
-
-### 仕様メモ
-
-- 暗号化されたPDFは開けないことがあります。その行は赤く表示されて、結合対象から自動で外れます。
-- しおり（ブックマーク）は引き継がれません。フォーム・注釈はだいたい引き継がれます。
-- 出力ファイル名は、PDF内部のタイトル情報にも同じ名前が書き込まれます。
-- PCでの使用を想定しています。スマホ・タブレットでは `⋮⋮` をつかんで並べ替えてください。
-
-役に立ったら ⭐ をもらえると嬉しいです。ほかの人がこのツールを見つけやすくなります。
+* 暗号化されたPDFは読み込めない場合があり、該当する行は赤く表示されて自動的に除外される。
+* しおり（ブックマーク）は引き継がれないが、フォームや注釈は原則として引き継がれる。
+* 出力ファイル名は、PDF内部のタイトル情報にも反映される。
+* PCでの利用を想定しているが、スマートフォンやタブレットでは左側のハンドル部分を操作して並べ替えることができる。
 
 ---
 
-## Files / ファイル
+## 構成ファイル
 
-| Path | Role |
+| パス | 説明 |
 | --- | --- |
-| `pdf-merge.html` | The whole app in one file: styles, UI, and script. pdf-lib 1.17.1 is embedded at the end. / これ1つで完結する本体。末尾に pdf-lib 1.17.1 を埋め込み済み |
+| `pdf-merge.html` | スタイル、UI、スクリプトを一体化した本体ファイル（`pdf-lib` 埋め込み済み） |
 | `LICENSE` | MIT License |
 
-Reordering just works on the `items` array directly — `reorderTo` rewrites it, `render` redraws the list.
-並べ替えは `items` 配列そのものを操作しています（`reorderTo` が並びを書き換えて、`render` が描き直すだけ）。
+## ライセンス
 
-## License / ライセンス
-
-[MIT License](LICENSE). Use it, copy it, tweak it, ship it — commercial use included. Just keep the copyright notice.
-自由に使用・複製・改変・再配布できます（商用利用もOK）。著作権表示だけ残してください。
-
-Built with [pdf-lib](https://github.com/Hopding/pdf-lib) (MIT).
+MIT Licenseのもとで公開している。商用利用を含めて自由に利用・改変・再配布が可能。
